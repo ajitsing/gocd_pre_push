@@ -19,5 +19,5 @@ Gem::Specification.new do |s|
   s.test_files                  =   s.files.grep(%r{^(test|spec|features)/})
   s.require_paths               =   ["lib"]
 
-  s.add_dependency                  'gocd'
+  s.add_dependency                  'gocd', '~> 0.5'
 end
