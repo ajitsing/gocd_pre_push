@@ -34,6 +34,13 @@ Once you have run the ```gocd_pre_push create command``` command, you need to do
 
 And your setup is done, gocd_pre_push is ready to check your specified pipelines status before pushing your code.
 
+### Once the first time setup is done, tell your fellow devs to run the below commands in the repo
+```bash
+bundle install
+gocd_pre_push use_hooks
+```
+It will take the hooks which you pushed to your repo and symlink them with the .git/hooks
+
 ### This is how your {project_root}/hooks/pre-push will look like
 ```ruby
 #!/usr/bin/env ruby
