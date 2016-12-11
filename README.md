@@ -13,8 +13,20 @@ Its very simple to integrate gocd_pre_push with your project. All you have to do
 ```ruby
 gem 'gocd_pre_push'
 ```
+###### OR
 
-##### {project_root}/hooks/pre-push
+```bash
+gem install gocd_pre_push
+```
+
+#### Go to your projects root folder and execute below command
+```bash
+gocd_pre_push create
+```
+#### What does the above command do?
+The above command will create pre-push hooks and pipelines.yml. It will also symlink the newly created pre-push hook with the ./git/hooks folder. Don't worry about your old hooks because they will be saved inside .git/hooks.old folder. Start tracking the {project_root}/hooks folder with git and whenever a change is required, do that in this folder, it will take care of updating the .git/hooks for you.
+
+##### This is how your {project_root}/hooks/pre-push will look like
 ```ruby
 #!/usr/bin/env ruby
 
@@ -22,22 +34,24 @@ require 'gocd_pre_push'
 
 include GOCD_PRE_PUSH
 
+#Add your gocd server details here
 gocd_server = GocdServer.with do |server|
   server.url      = 'http://yourgocdserverurl.com'
   server.username = 'your_gocd_username'
   server.password = 'your_gocd_password'
 end
 
-suspects_found = BuildOfficer.new('/path/to/pipelines.yml', gocd_server).investigate
+#Don't change the pipelines path unless pipelines.yml is not present in the repo's root folder
+suspects_found = BuildOfficer.new('pipelines.yml', gocd_server).investigate
 
 if suspects_found
   abort 'Can not push!'
 else
-  print "All dependent pipelines are green! You can push your changes :)\n"
+  print 'All dependent pipelines are green! You can push your changes :)'
 end
 ```
 
-##### pipelines.yml
+##### Here is a sample of pipelines.yml
 ```yml
 - pipeline: MyAwesomeProject
   stages:
@@ -47,4 +61,30 @@ end
 - pipeline: MyAwesomeProject_Smoke
   stages:
     - smoke
+```
+
+##### Licence
+
+```LICENSE
+MIT License
+
+Copyright (c) 2016 Ajit Singh
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
 ```
