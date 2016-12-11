@@ -16,7 +16,7 @@ gem 'gocd_pre_push'
 
 ##### {project_root}/hooks/pre-push
 ```ruby
-#!/usr/bin/ruby
+#!/usr/bin/env ruby
 
 require 'gocd_pre_push'
 
