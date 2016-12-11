@@ -19,7 +19,8 @@ gem 'gocd_pre_push'
 gem install gocd_pre_push
 ```
 
-### Go to your projects root folder and execute below command
+### What does it take to setup gocd_pre_push for my project
+Well all it takes is a very simple command. Go to your projects root folder and execute below command:
 ```bash
 gocd_pre_push create
 ```
