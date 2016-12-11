@@ -1,3 +1,3 @@
 source :rubygems
 
-gem 'gocd'
+gem 'gocd', '~> 0.5'

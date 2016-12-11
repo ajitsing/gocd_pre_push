@@ -21,7 +21,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  gocd
+  gocd (~> 0.5)
 
 BUNDLED WITH
-   1.12.4
+   1.13.1
