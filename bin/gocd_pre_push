@@ -29,7 +29,9 @@ def execute
   elsif ARGV[0] == 'use_hooks'
     create_symlink
   else
-    print_info "Right usage is: gocd_pre_push create\n"
+    print_info "Right usage is:"
+    print_info "gocd_pre_push create     => For first time setup"
+    print_info "gocd_pre_push use_hooks  => To use the already created hooks\n"
   end
 end
 
