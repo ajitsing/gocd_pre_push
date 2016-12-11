@@ -1,0 +1,30 @@
+#!/usr/bin/env ruby
+
+require_relative '../templates/pre_push.rb'
+require_relative '../templates/pipelines.rb'
+require_relative '../scripts/symlink_git_hooks.rb'
+require_relative '../lib/gocd_pre_push/pretty_printer.rb'
+
+include GOCD_PRE_PUSH::PrettyPrinter
+
+def execute
+  if ARGV[0] == 'create'
+    print_info "Creating pre-push hook.."
+    `mkdir hooks`
+    File.write('hooks/pre-push', pre_push_hook)
+    print_info "Done!\n"
+    print_info "Adding executable permission to pre-push hook.."
+    `sudo chmod 777 hooks/pre-push`
+    print_success "Please update the pre-push hook with your gocd server url, username and password\n"
+    print_info "Creating symlink ./.git/hooks => hooks"
+    print_info "Your old hooks will be saved inside ./.git/hooks.old\n"
+    symlink_git_hooks
+
+    print_success "Adding pipelines.yml, change the pipelines as per your requirement!\n"
+    File.write('pipelines.yml', pipelines)
+  else
+    print_info "Right usage is: gocd_pre_push create\n"
+  end
+end
+
+execute
