@@ -27,6 +27,13 @@ gocd_pre_push create
 ### What does the above command do?
 The above command will create pre-push hooks and pipelines.yml. It will also symlink the newly created pre-push hook with the ./git/hooks folder. Don't worry about your old hooks because they will be saved inside .git/hooks.old folder. Start tracking the {project_root}/hooks folder with git and whenever a change is required, do that in this folder, it will take care of updating the .git/hooks for you.
 
+### After running the ```create``` command:
+Once you have run the ```gocd_pre_push create command``` command, you need to do two very simple things.
+* Edit hooks/pre-push and specify your gocd url, username and password.
+* Edit pipelines.yml and add your own gocd pipelines.
+
+And your setup is done, gocd_pre_push is ready to check your specified pipelines status before pushing your code.
+
 ### This is how your {project_root}/hooks/pre-push will look like
 ```ruby
 #!/usr/bin/env ruby
