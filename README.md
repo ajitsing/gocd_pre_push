@@ -9,7 +9,7 @@ gocd_pre_push helps developers by checking the status of concerned pipelines and
 ## How to use it?
 Its very simple to integrate gocd_pre_push with your project. All you have to do is add 'gocd_pre_push' in your Gemfile and start using it in your git pre_push hook.
 
-##### Gemfile
+### Gemfile
 ```ruby
 gem 'gocd_pre_push'
 ```
@@ -19,14 +19,14 @@ gem 'gocd_pre_push'
 gem install gocd_pre_push
 ```
 
-#### Go to your projects root folder and execute below command
+### Go to your projects root folder and execute below command
 ```bash
 gocd_pre_push create
 ```
-#### What does the above command do?
+### What does the above command do?
 The above command will create pre-push hooks and pipelines.yml. It will also symlink the newly created pre-push hook with the ./git/hooks folder. Don't worry about your old hooks because they will be saved inside .git/hooks.old folder. Start tracking the {project_root}/hooks folder with git and whenever a change is required, do that in this folder, it will take care of updating the .git/hooks for you.
 
-##### This is how your {project_root}/hooks/pre-push will look like
+### This is how your {project_root}/hooks/pre-push will look like
 ```ruby
 #!/usr/bin/env ruby
 
@@ -51,7 +51,7 @@ else
 end
 ```
 
-##### Here is a sample of pipelines.yml
+### Here is a sample of pipelines.yml
 ```yml
 - pipeline: MyAwesomeProject
   stages:
@@ -63,7 +63,7 @@ end
     - smoke
 ```
 
-##### Licence
+### Licence
 
 ```LICENSE
 MIT License
