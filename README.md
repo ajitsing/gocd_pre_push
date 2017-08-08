@@ -2,6 +2,7 @@
 Check GOCD pipelines status before pushing your code
 
 [![Gem Version](https://badge.fury.io/rb/gocd_pre_push.svg)](https://badge.fury.io/rb/gocd_pre_push)
+[![Twitter Follow](https://img.shields.io/twitter/follow/Ajit5ingh.svg?style=social)](https://twitter.com/Ajit5ingh)
 
 ## Why gocd_pre_push?
 When an agile team grows and becomes distributed, there comes a problem of keeping the pipelines green. To have less pipeline failures agile team follows one of the best practices, which is to not to push the code on a red pipeline. But how often we make an effort to open the GOCD dashboard and check the status of the pipelines. And the problem becomes worse when developer is not sure about what pipelines will be effected by their code.
