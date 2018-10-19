@@ -14,7 +14,7 @@ gocd_server = GocdServer.with do |server|
 end
 
 #Don't change the pipelines path unless pipelines.yml is not present in the repo's root folder
-suspects_found = BuildOfficer.new('pipelines.yml', gocd_server).investigate
+suspects_found = BuildOfficer.new('gocd_pre_push.yml', gocd_server).investigate
 
 if suspects_found
   abort 'Can not push!'
