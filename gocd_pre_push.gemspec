@@ -6,8 +6,7 @@ require_relative './lib/gocd_pre_push/version.rb'
 Gem::Specification.new do |s|
   s.name                        =   'gocd_pre_push'
   s.version                     =   GOCD_PRE_PUSH::VERSION
-  s.date                        =   '2016-12-08'
-  s.summary                     =   'Check GOCD pipeline status before pushing your changes to central repo'
+  s.summary                     =   'Check GoCD pipeline status before pushing your changes to central repo'
   s.description                 =   s.summary
   s.authors                     =   ['Ajit Singh']
   s.email                       =   'jeetsingh.ajit@gamil.com'
@@ -19,6 +18,6 @@ Gem::Specification.new do |s|
   s.test_files                  =   s.files.grep(%r{^(test|spec|features)/})
   s.require_paths               =   ["lib"]
 
-  s.add_dependency                  'gocd', '~> 0.5'
+  s.add_dependency                  'gocd', '~> 1.3'
   s.add_development_dependency      "rspec"
 end

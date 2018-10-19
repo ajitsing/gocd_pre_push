@@ -1,4 +1,4 @@
 source :rubygems
 
-gem 'gocd', '~> 0.5'
+gem 'gocd', '~> 1.3'
 gem 'rspec'

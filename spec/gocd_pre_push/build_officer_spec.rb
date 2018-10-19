@@ -21,14 +21,5 @@ describe 'BuildOffice' do
 
       expect(officer.investigate).to be_falsey
     end
-
-    it 'should return true when information is not available' do
-      build_informer = instance_double('build_informer', information_available?: false)
-
-      expect(GOCD_PRE_PUSH::BuildInformer).to receive(:new).and_return(build_informer)
-      officer = GOCD_PRE_PUSH::BuildOfficer.new 'concerned_pipelines', 'server_details'
-
-      expect(officer.investigate).to be_truthy
-    end
   end
 end
