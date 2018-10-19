@@ -21,6 +21,4 @@ Gem::Specification.new do |s|
   s.add_dependency                  'gocd', '~> 1.3'
   s.add_dependency                  'rake'
   s.add_development_dependency      "rspec"
-
-  s.extensions                  =   ["Rakefile"]
 end
