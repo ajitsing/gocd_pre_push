@@ -5,6 +5,7 @@ def pre_push_hook
 require 'gocd_pre_push'
 
 include GOCD_PRE_PUSH
+include GOCD_PRE_PUSH::PrettyPrinter
 
 #Add your gocd server details here
 gocd_server = GocdServer.with do |server|
@@ -19,7 +20,7 @@ suspects_found = BuildOfficer.new('gocd_pre_push.yml', gocd_server).investigate
 if suspects_found
   abort 'Can not push!'
 else
-  print 'All dependent pipelines are green! You can push your changes :)'
+  print_success 'All dependent pipelines are green! Allowing git to push changes :)'
 end
   HOOK
 end
