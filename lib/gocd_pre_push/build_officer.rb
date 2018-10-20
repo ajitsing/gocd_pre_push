@@ -10,7 +10,7 @@ module GOCD_PRE_PUSH
     end
 
     def investigate
-      print_info "Making sure that you are not pushing changes on already broken code..\n"
+      print_info "Build cop is on duty.."
       red_pipelines = @build_informer.red_pipelines
       report_red_builds(red_pipelines) if red_pipelines.any?
       red_pipelines.any?
@@ -18,7 +18,7 @@ module GOCD_PRE_PUSH
 
     private
     def report_red_builds(pipelines)
-      print_info "Oops!! Some of the pipelines are red:\n"
+      print_info "The cop found below crimes, all will be judged..\n"
       pipelines.each_with_index do |pipeline, index|
         pipeline, stage = pipeline.name.gsub(' ', '').split('::')
         print_error "  #{index+1}. #{pipeline}'s #{stage} stage is failing.\n"

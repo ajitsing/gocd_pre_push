@@ -11,7 +11,7 @@ module GOCD_PRE_PUSH
 
       pipelines = YAML::load_file pipelines
       pipelines.map! { |pipeline| pipeline_stage_name pipeline }.flatten!
-      @pipelines = GOCD::PipelineGroup.new pipelines
+      @pipelines = GOCD::PipelineGroup.new(pipelines, cache: true)
     end
 
     def information_available?

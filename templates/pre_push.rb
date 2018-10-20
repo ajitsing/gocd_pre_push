@@ -7,20 +7,19 @@ require 'gocd_pre_push'
 include GOCD_PRE_PUSH
 include GOCD_PRE_PUSH::PrettyPrinter
 
-#Add your gocd server details here
 gocd_server = GocdServer.with do |server|
   server.url = 'http://yourgocdserverurl.com'
   server.username = 'your_gocd_username'
   server.password = 'your_gocd_password'
 end
 
-#Don't change the pipelines path unless pipelines.yml is not present in the repo's root folder
+#Don't change the pipelines path unless gocd_pre_push.yml is not present in the repo's root folder
 suspects_found = BuildOfficer.new('gocd_pre_push.yml', gocd_server).investigate
 
 if suspects_found
-  abort 'Can not push!'
+  abort
 else
-  print_success 'All dependent pipelines are green! Allowing git to push changes :)'
+  print_success 'All clear!'
 end
   HOOK
 end
