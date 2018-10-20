@@ -1,6 +1,7 @@
 require 'rubygems'
 require 'bundler'
+require_relative 'gocd_pre_push/linker'
 
 Gem.post_install do |_installer|
-  p "Installed gocd_pre_push successfully!!"
+  GOCD_PRE_PUSH::Linker.new.symlink_git_hooks
 end
