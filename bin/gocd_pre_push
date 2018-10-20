@@ -21,7 +21,7 @@ def execute
     linker.symlink_git_hooks
 
     print_success "Adding pipelines.yml, change the pipelines as per your requirement!\n"
-    File.write('pipelines.yml', pipelines)
+    File.write('gocd_pre_push.yml', pipelines)
   elsif ARGV[0] == 'use_hooks'
     linker.symlink_git_hooks
   else
