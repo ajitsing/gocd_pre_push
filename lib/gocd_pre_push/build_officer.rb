@@ -12,7 +12,13 @@ module GOCD_PRE_PUSH
     def investigate
       print_info "Build cop is on duty.."
       red_pipelines = @build_informer.red_pipelines
-      report_red_builds(red_pipelines) if red_pipelines.any?
+
+      if red_pipelines.any?
+        report_red_builds(red_pipelines)
+      else
+        print_success 'All clear!'
+      end
+
       red_pipelines.any?
     end
 

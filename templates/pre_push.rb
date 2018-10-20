@@ -14,12 +14,8 @@ gocd_server = GocdServer.with do |server|
 end
 
 #Don't change the pipelines path unless gocd_pre_push.yml is not present in the repo's root folder
-suspects_found = BuildOfficer.new('gocd_pre_push.yml', gocd_server).investigate
+crime_found = BuildOfficer.new('gocd_pre_push.yml', gocd_server).investigate
 
-if suspects_found
-  abort
-else
-  print_success 'All clear!'
-end
+abort if crime_found
   HOOK
 end

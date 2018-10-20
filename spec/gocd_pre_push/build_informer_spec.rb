@@ -11,7 +11,7 @@ describe 'BuildInformer' do
   context '#pipelines' do
     it 'should create a group of pipelines from given yml file' do
       pipelines = ['MyAwesomeProject :: spec', 'MyAwesomeProject :: integration', 'MyAwesomeProject :: generate_artifacts', 'MyAwesomeProject_Smoke :: smoke']
-      expect(GOCD::PipelineGroup).to receive(:new).with(pipelines)
+      expect(GOCD::PipelineGroup).to receive(:new).with(pipelines, {cache: true})
 
       GOCD_PRE_PUSH::BuildInformer.new './spec/gocd_pre_push/pipelines.yml', gocd_server
     end
